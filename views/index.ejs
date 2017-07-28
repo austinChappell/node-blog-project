@@ -1,0 +1,60 @@
+<% include partials/header %>
+
+<div class="container">
+
+  <a id="write-button" class="button" href="/new">Write</a>
+
+  <h1 id="page-title">Your Blog Posts</h1>
+
+  <% for (i = blogPosts.length - 1; i >= 0; i--) { %>
+
+    <div class="header-div">
+
+      <h2><a href="/blogs/<%= blogPosts[i]._id %>"> <%= blogPosts[i].title %> </a></h2>
+
+      <div>
+
+        <div class="meta">
+
+          <span class="date"> <%= blogPosts[i].meta.date %> </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="body-div">
+
+      <article>
+
+        <% if (blogPosts[i].post.image !== '') { %>
+          <img class="post-image" src="<%= blogPosts[i].post.image %>" />
+        <% }; %>
+
+        <div class="post">
+
+          <p><%= blogPosts[i].post.content[0].substring(0, 100) %> . . .</p>
+          <a class='write-post' href="/blogs/<%= blogPosts[i]._id %>">Read More</a>
+
+        </div>
+
+        <% if (blogPosts[i].site.name !== '' && blogPosts[i].site.url !== '') { %>
+          <div class="site">
+
+            <p>Part of this content was pulled from <a href="<%= blogPosts[i].site.url %>"><%= blogPosts[i].site.name %></a>.</p>
+
+          </div>
+        <% }; %>
+
+      </article>
+
+    </div>
+
+    <hr />
+
+  <% }; %>
+
+</div>
+
+<% include partials/footer %>

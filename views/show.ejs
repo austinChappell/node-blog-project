@@ -1,0 +1,93 @@
+<% include partials/header %>
+
+<div class="container">
+
+    <div class="header">
+
+      <h2> <%= post.title %> </h2>
+
+      <div>
+
+        <div class="meta">
+
+          <span class="date"> <%= post.meta.date %> </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="body-div">
+
+      <article>
+
+        <% if (post.post.image !== '') { %>
+          <img class="post-image" src="<%= post.post.image %>" />
+        <% }; %>
+
+        <div class="post">
+
+          <% for(let j = 0; j < post.post.content.length; j++) { %>
+            <p><%= post.post.content[j] %></p>
+          <% }; %>
+
+        </div>
+
+        <% if (post.site.name !== '' && post.site.url !== '') { %>
+          <div class="site">
+
+            <p>Part of this content was pulled from <a href="<%= post.site.url %>"><%= post.site.name %></a>.</p>
+
+          </div>
+        <% }; %>
+
+        <form class="" id="comment-form" action="/blogs/<%= post._id %>/comments#comment-form" method="POST">
+          <input id="comment-value" type="text" name="text" placeholder="add comment here..." />
+          <input type="text" name="author" placeholder="author" />
+          <button id="submit-comment">SUBMIT</button>
+        </form>
+
+        <ul class="comments">
+          <% post.comments.forEach(function(comment) { %>
+            <li>
+              <form class="delete-comment" action="/blogs/<%= post._id %>/comments/<%= comment._id %>/delete?_method=DELETE" method="POST">
+                <input class="hide" value="<%= comment._id %>" />
+                <button type="submit"><i class="fa fa-trash"></i></button>
+              </form>
+              <strong><%= comment.author %></strong> "<%= comment.text %>"
+            </li>
+          <% }); %>
+        </ul>
+
+      </article>
+
+      <a class="write-post" href="/blogs/<%= post._id %>/edit">EDIT</a>
+
+      <a class="delete-button" href="/blogs/<%= post._id %>/delete">DELETE</a>
+
+    </div>
+
+    <hr />
+
+</div>
+
+<script type="text/javascript">
+
+let submitComment = document.querySelector('#submit-comment');
+submitComment.addEventListener('click', function(e) {
+});
+
+// function reload() {
+//   let path = window.location.pathname;
+//   let body = document.body;
+//   let scrollHeight = body.scrollTop;
+//   let req = new XMLHttpRequest();
+//   req.open('GET', 'http://localhost:3000' + window.location.pathname);
+//   req.addEventListener('load', location.reload);
+//   req.send();
+// }
+
+</script>
+
+<% include partials/footer %>

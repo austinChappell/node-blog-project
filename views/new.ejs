@@ -1,0 +1,68 @@
+<% include partials/header %>
+
+<% let d = new Date(); %>
+<% let month = d.getMonth() + 1; %>
+<% let twoDigitMonth = ("0" + month).slice(-2); %>
+<% let date = "0 " + d.getDate(); %>
+<% twoDigitDate = date.slice(-2); %>
+<% let year = d.getFullYear(); %>
+
+<div class="container">
+
+  <h1 id="page-title">Create A New Blog Post</h1>
+
+  <a class="button" href="/">Go Back</a>
+
+  <form class="new-post" action="/blogs" method="POST">
+
+    <div class="form-group">
+      <label for="title">Post Title</label>
+      <br />
+      <input class="full-width-input" type="text" name="title" value="" required />
+    </div>
+
+    <div class="flex-form">
+
+      <div class="form-group half-width hide">
+        <label for="date"></label>
+        <br />
+        <input type="text" name="date" value="<%= `${twoDigitMonth} - ${twoDigitDate} - ${year}` %>" required />
+      </div>
+
+      <div class="form-group full-width-input">
+        <label for="image">Image URL</label>
+        <br />
+        <input class="full-width-input" type="text" name="image" value="" />
+      </div>
+
+    </div>
+
+    <div class="form-group">
+      <label for="content">Post Content</label>
+      <br />
+      <textarea class="full-width-input" type="text" name="content" rows="20" cols="80" required ></textarea>
+    </div>
+
+    <div class="flex-form">
+
+      <div class="form-group half-width">
+        <label for="citationName">Citation Website Name (if applicable)</label>
+        <br />
+        <input type="text" name="citationName" />
+      </div>
+
+      <div class="form-group half-width">
+        <label for="citationUrl">Citation Website URL</label>
+        <br />
+        <input type="text" name="citationUrl" />
+      </div>
+
+    </div>
+
+    <input class="write-post" type="submit" value="Publish">
+
+  </form>
+
+</div>
+
+<% include partials/footer %>

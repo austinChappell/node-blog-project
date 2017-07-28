@@ -1,0 +1,14 @@
+<% include partials/header %>
+
+<div class="container">
+
+  <h1>Are you sure you want to delete your post entitled "<em><%= blogPost.title %></em>"?</h1>
+
+  <form class="center" action="/blogs/<%= blogPost._id %>?_method=DELETE" method="POST">
+    <a href="/" class="write-post">NO</a>
+    <button class="delete-button" type="submit">YES</button>
+  </form>
+
+</div>
+
+<% include partials/footer %>
