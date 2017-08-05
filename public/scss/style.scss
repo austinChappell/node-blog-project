@@ -1,8 +1,16 @@
+$color-primary: #002F2F;
+$color-secondary: #046380;
+$color-tertiary: #A7A37E;
+$color-delete-primary: #61001D;
+$color-delete-secondary: #A30032;
+$color-bg: #EFECCA;
+$white: #fff;
+
 body {
-  background-color: #EFECCA;
+  background-color: $color-bg;
   font-family: sans-serif;
   margin: 0;
-  color: #002F2F;
+  color: $color-primary;
 }
 
 .container {
@@ -16,8 +24,8 @@ body {
 }
 
 #top-bar {
-  color: #EFECCA;
-  background-color: #002F2F;
+  color: $color-bg;
+  background-color: $color-primary;
 }
 
 #top-bar h1 {
@@ -29,11 +37,11 @@ body {
 
 #top-bar h1 a {
   text-decoration: none;
-  color: #EFECCA;
+  color: $color-bg;
 }
 
 #top-bar h1 a:hover {
-  color: #A7A37E;
+  color: $color-tertiary;
 }
 
 #top-bar h1 a:focus {
@@ -62,7 +70,7 @@ img {
 
 h2, h2 a {
   font-size: 25px;
-  color: #046380;
+  color: $color-secondary;
   text-decoration: none;
   margin: 0;
   padding-top: 20px;
@@ -79,7 +87,7 @@ h2 a:focus {
 .meta {
   padding: 15px 0;
   font-style: italic;
-  color: #A7A37E;
+  color: $color-tertiary;
 }
 
 .meta .date {
@@ -164,7 +172,7 @@ textarea {
 }
 
 .button {
-  background-color: #A7A37E;
+  background-color: $color-tertiary;
   text-decoration: none;
   color: white;
   border: none;
@@ -181,8 +189,8 @@ textarea {
 }
 
 .write-post {
-  background-color: #002F2F;
-  color: #EFECCA;
+  background-color: $color-primary;
+  color: $color-bg;
   border: none;
   border-radius: 5px;
   box-shadow: 1px 1px 2px gray;
@@ -194,7 +202,7 @@ textarea {
 }
 
 .write-post:hover {
-  background-color: #046380;
+  background-color: $color-secondary;
 }
 
 .write-post:focus {
@@ -202,8 +210,8 @@ textarea {
 }
 
 .delete-button {
-  background-color: #61001D;
-  color: #EFECCA;
+  background-color: $color-delete-primary;
+  color: $color-bg;
   border: none;
   border-radius: 5px;
   box-shadow: 1px 1px 2px gray;
@@ -215,7 +223,7 @@ textarea {
 }
 
 .delete-button:hover {
-  background-color: #A30032;
+  background-color: $color-delete-secondary;
 }
 
 .comments li {
