@@ -5,10 +5,30 @@ $color-delete-primary: #61001D;
 $color-delete-secondary: #A30032;
 $color-bg: #EFECCA;
 $white: #fff;
+$color-box-shadow: gray;
+
+$font-family-primary: 'Roboto', sans-serif;
+$font-family-secondary: serif;
+
+@mixin button {
+  color: $white;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 2px $color-box-shadow;
+  margin-top: 20px;
+  font-size: 1.0em;
+  padding: 5px 10px;
+  cursor: pointer;
+  text-decoration: none;
+  &:focus {
+    outline: none;
+  }
+  @content;
+}
 
 body {
   background-color: $color-bg;
-  font-family: sans-serif;
+  font-family: $font-family-primary;
   margin: 0;
   color: $color-primary;
 }
@@ -33,19 +53,16 @@ body {
   text-align: center;
   padding: 20px;
   margin: 0;
-}
-
-#top-bar h1 a {
-  text-decoration: none;
-  color: $color-bg;
-}
-
-#top-bar h1 a:hover {
-  color: $color-tertiary;
-}
-
-#top-bar h1 a:focus {
-  outline: none;
+  a {
+    text-decoration: none;
+    color: $color-bg;
+    &:hover {
+      color: $color-tertiary;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
 }
 
 h1 {
@@ -68,38 +85,37 @@ img {
   max-width: 100%;
 }
 
-h2, h2 a {
+h2 {
   font-size: 25px;
   color: $color-secondary;
-  text-decoration: none;
   margin: 0;
   padding-top: 20px;
-}
-
-h2 a:visited {
-  color: inherit;
-}
-
-h2 a:focus {
-  outline: none;
+  a {
+    text-decoration: none;
+    &:visited {
+      color: inherit;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
 }
 
 .meta {
   padding: 15px 0;
   font-style: italic;
   color: $color-tertiary;
-}
-
-.meta .date {
-  font-weight: bold;
+  .date {
+    font-weight: bold;
+  }
 }
 
 .post {
   font-size: 17px;
   line-height: 20px;
-}
-.post img {
-  border-radius: 10px;
+  img {
+    border-radius: 10px;
+  }
 }
 
 .post-image {
@@ -111,14 +127,13 @@ h2 a:focus {
 }
 
 .site {
-  border-left: 5px solid #ff5d6b;
+  border-left: 5px solid $color-delete-secondary;
   padding-left: 15px;
   margin: 25px 0;
-}
-
-.site a {
-  color: #4cdbb0;
-  text-decoration: none;
+  a {
+    color: $color-secondary;
+    text-decoration: none;
+  }
 }
 
 .hide {
@@ -172,60 +187,57 @@ textarea {
 }
 
 .button {
-  background-color: $color-tertiary;
-  text-decoration: none;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 1px 1px 2px gray;
-  margin-top: 20px;
-  font-size: 1.0em;
-  padding: 5px 10px;
-  cursor: pointer;
-}
-
-.button:hover {
-  background-color: #67654E;
+  @include button {
+    background-color: $color-tertiary;
+    &:hover {
+      background-color: #67654E;
+    }
+  }
 }
 
 .write-post {
-  background-color: $color-primary;
-  color: $color-bg;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 1px 1px 2px gray;
-  margin-top: 20px;
-  font-size: 1.0em;
-  padding: 5px 10px;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-.write-post:hover {
-  background-color: $color-secondary;
-}
-
-.write-post:focus {
-  outline: none;
+  @include button {
+    background-color: $color-primary;
+    &:hover {
+      background-color: $color-secondary;
+    }
+  }
 }
 
 .delete-button {
-  background-color: $color-delete-primary;
-  color: $color-bg;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 1px 1px 2px gray;
-  margin-top: 20px;
-  font-size: 1.0em;
-  padding: 5px 10px;
-  cursor: pointer;
-  text-decoration: none;
+  @include button {
+    background-color: $color-delete-primary;
+  }
 }
 
-.delete-button:hover {
-  background-color: $color-delete-secondary;
+.comments {
+  background-color: $white;
+  height: 100px;
+  overflow: scroll;
+  padding: 10px 20px;
+  li {
+    display: flex;
+    list-style: none;
+    form {
+      margin-right: 10px;
+    }
+  }
+  p {
+    margin-top: 0;
+  }
 }
 
-.comments li {
-  list-style: none;
+
+.delete-comment-form {
+  display: inline;
+}
+
+.delete-comment-btn {
+  @include button {
+    background-color: $color-delete-primary;
+    &:hover {
+      background-color: $color-delete-secondary;
+    }
+  }
+  margin-top: 0;
 }
